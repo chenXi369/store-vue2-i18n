@@ -7,7 +7,7 @@
 
         <el-form-item prop="username">
           <span class="svg-container">{{ $t('login.email') }}</span>
-          <el-input size="small" ref="username" v-model="loginForm.username" placeholder="Username" name="username"
+          <el-input size="small" ref="username" v-model="loginForm.username" :placeholder="$t('login.email')" name="username"
             type="text" tabindex="1" auto-complete="on" />
         </el-form-item>
 
@@ -16,7 +16,7 @@
             <span class="svg-container">{{ $t('login.password') }}</span>
           </span>
           <el-input size="small" :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
-            placeholder="Password" name="password" tabindex="2" auto-complete="on" @keyup.enter.native="handleLogin">
+            :placeholder="$t('login.password')">
             <el-button slot="append" @click="showPwd">
               <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
             </el-button>
@@ -29,7 +29,6 @@
         <div class="tips">
           <router-link to="/register">{{ $t('login.noAccount') }}</router-link>
         </div>
-
       </el-form>
     </div>
   </div>
@@ -108,7 +107,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .login-page {
   display: flex;
   flex-direction: column;
@@ -133,8 +132,6 @@ export default {
   }
 
   .el-input {
-    display: inline-block;
-    height: 35px;
     width: 300px;
 
     .el-form-item {

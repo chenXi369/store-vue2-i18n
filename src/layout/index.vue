@@ -6,6 +6,8 @@
         <header-top />
       </div>
       <app-main />
+
+      <page-footer /> 
     </div>
   </div>
 </template>
@@ -13,13 +15,15 @@
 <script>
 import { Navbar, AppMain, HeaderTop } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
+import PageFooter from '@/components/PageFooter'
 
 export default {
   name: 'Layout',
   components: {
     Navbar,
     AppMain,
-    HeaderTop
+    HeaderTop,
+    PageFooter
   },
   mixins: [ResizeMixin],
   computed: {

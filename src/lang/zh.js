@@ -2,16 +2,36 @@ export default {
     route: {
         Home: '首页',
         Login: '登录',
-        register: '注册',
-        account: '账户'
+        Register: '注册',
+        Account: '账户'
     },
     navbar: {
-        dashboard: '首页',
-        github: '项目地址',
-        logOut: '退出登录',
+        callme: '联系电话',
+        loginName: '登录',
+        goodCar: '购物车',
         profile: '个人中心',
         theme: '换肤',
         size: '布局大小'
+    },
+    footer: {
+        listKeys: ['产品', '我的公司', '账户信息', '商户信息'],
+        itemList: [{
+                key: '产品',
+                values: []
+            },
+            {
+                key: '我的公司',
+                values: []
+            },
+            {
+                key: '账户信息',
+                values: []
+            },
+            {
+                key: '商户信息',
+                values: []
+            },
+        ]
     },
     // 登录
     login: {
@@ -23,7 +43,15 @@ export default {
     },
     // 注册
     register: {
-
+        title: '创建账号',
+        logIn: '保存',
+        email: '邮箱',
+        password: '密码',
+        sex: '性别',
+        birthDay: '生日',
+        username: '昵称',
+        sexArr: ['男', '女'],
+        agreement: '我已阅读并同意相关协议'
     },
     // 账户
     account: {

@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <span>联系电话：+852 38950974</span>
+    <span>{{ $t('navbar.callme') }}：+852 38950974</span>
 
     <div class="right-menu">
       <div class="menu-item">
@@ -8,11 +8,11 @@
       </div>
       <router-link to="/login" class="menu-item">
         <svg-icon icon-class="user"></svg-icon>
-        <span>登录</span>
+        <span>{{ $t('navbar.loginName') }}</span>
       </router-link>
       <div class="menu-item">
         <svg-icon icon-class="goodCar"></svg-icon>
-        <span>购物车</span>
+        <span>{{ $t('navbar.goodCar') }}</span>
       </div>
     </div>
   </div>
@@ -56,11 +56,15 @@ export default {
     .menu-item {
       cursor: pointer;
       display: inline-block;
-      padding: 0 8px;
+      padding: 0 12px;
       height: 100%;
-      font-size: 18px;
-      color: #5a5e66;
+      font-size: 15px;
+      color: #666;
       vertical-align: text-bottom;
+
+      span {
+        margin-left: 4px;
+      }
 
       &:hover {
         color: #1890ff;

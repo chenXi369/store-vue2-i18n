@@ -1,371 +1,151 @@
 <template>
-  <div class="register">
-    <el-form
-      ref="registerForm"
-      :model="registerForm"
-      :rules="registerRules"
-      class="register-form"
-    >
-      <h3 class="title">后台管理系统</h3>
-      <el-form-item prop="areaDeptId">
-        <el-select
-          v-model="registerForm.areaDeptId"
-          placeholder="请选择服务地市"
-          @change="selectDivisionVlue"
-        >
-          <el-option
-            v-for="(dict, i) in redirectUrlOptions"
-            :key="i"
-            :label="dict.name"
-            :value="dict.dictLabel"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item prop="divisionCode">
-        <el-select
-          v-model="registerForm.divisionCode"
-          placeholder="请选择服务区县"
-          :disabled="canSelect"
-        >
-          <el-option
-            v-for="(dict, i) in divisionpe"
-            :key="i"
-            :label="dict.name"
-            :value="dict.dictLabel"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item v-if="cheboxList.length > 0" style="margin-bottom:0;!important">
-        <el-radio-group v-model="registerForm.dynamic.businessType" max="1">
-          <el-radio
-            v-for="i in cheboxList"
-            :key="i.id"
-            style="margin-bottom: 5px"
-            :label="i.dictLabel"
-          >{{ i.dictLabel }}</el-radio>
-        </el-radio-group>
-      </el-form-item>
+  <div class="register-page">
+    <h3>{{ $t('register.title') }}</h3>
+    <div class="register-container">
+      <el-form ref="registerForm" :model="registerForm" :rules="registerRules" class="register-form" auto-complete="on"
+        label-position="left">
 
-      <el-form-item prop="userName">
-        <el-input
-          v-model="registerForm.userName"
-          type="text"
-          auto-complete="off"
-          placeholder="账号"
-          :maxlength="30"
-          :minlength="2"
-          @keyup.native="btKeyUp"
-        >
-          <svg-icon
-            slot="prefix"
-            icon-class="user"
-            class="el-input__icon input-icon"
-          />
-        </el-input>
-      </el-form-item>
-      <el-form-item prop="phonenumber">
-        <el-input
-          v-model="registerForm.phonenumber"
-          type="text"
-          placeholder="请输入电话号码"
-        />
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input
-          v-model="registerForm.password"
-          type="password"
-          auto-complete="off"
-          placeholder="密码"
-          :maxlength="16"
-          :minlength="6"
-          @keyup.enter.native="handleRegister"
-        >
-          <svg-icon
-            slot="prefix"
-            icon-class="password"
-            class="el-input__icon input-icon"
-          />
-        </el-input>
-      </el-form-item>
-      <el-form-item prop="confirmPassword">
-        <el-input
-          v-model="registerForm.confirmPassword"
-          type="password"
-          auto-complete="off"
-          placeholder="确认密码"
-          :maxlength="16"
-          :minlength="6"
-          @keyup.enter.native="handleRegister"
-        >
-          <svg-icon
-            slot="prefix"
-            icon-class="password"
-            class="el-input__icon input-icon"
-          />
-        </el-input>
-      </el-form-item>
+        <el-form-item prop="username">
+          <span class="svg-container">{{ $t('register.sex') }}</span>
+          <el-radio-group v-model="registerForm.sex">
+            <el-radio :label="0">{{ $t('register.sexArr')[0] }}</el-radio>
+            <el-radio :label="1">{{ $t('register.sexArr')[1] }}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item prop="username">
+          <span class="svg-container">{{ $t('register.username') }}</span>
+          <el-input size="small" ref="username" v-model="registerForm.username" :placeholder="$t('register.username')"
+            name="username" type="text" tabindex="1" auto-complete="on" />
+        </el-form-item>
 
-      <el-form-item prop="userType">
-        <el-select
-          v-model="registerForm.userType"
-          disabled
-          placeholder="请选择账号类型"
-        >
-          <el-option
-            v-for="dict in userTypeOptions"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <!-- <el-form-item prop="code" v-if="captchaOnOff">
-        <el-input
-          v-model="registerForm.code"
-          auto-complete="off"
-          placeholder="验证码"
-          style="width: 63%"
-          @keyup.enter.native="handleRegister"
-        >
-          <svg-icon
-            slot="prefix"
-            icon-class="validCode"
-            class="el-input__icon input-icon"
-          />
-        </el-input>
-        <div class="register-code">
-          <img :src="codeUrl" @click="getCode" class="register-code-img" />
-        </div>
-      </el-form-item> -->
-      <el-form-item style="width: 100%">
-        <el-button
-          :loading="loading"
-          size="medium"
-          type="primary"
-          style="width: 100%"
-          @click.native.prevent="handleRegister"
-        >
-          <span v-if="!loading">注 册</span>
-          <span v-else>注 册 中...</span>
-        </el-button>
-        <div style="float: right">
-          <router-link
-            class="link-type"
-            :to="'/login'"
-          >使用已有账户登录</router-link>
-        </div>
-      </el-form-item>
-    </el-form>
-    <!--  底部  -->
-    <div class="el-register-footer">
-      <span>Copyright © All Rights Reserved.</span>
+        <el-form-item prop="email">
+          <span class="svg-container">{{ $t('register.email') }}</span>
+          <el-input size="small" ref="email" v-model="registerForm.email" :placeholder="$t('register.email')"
+            name="username" type="text" tabindex="1" auto-complete="on" />
+        </el-form-item>
+
+        <el-form-item prop="password">
+          <span class="svg-container">
+            <span class="svg-container">{{ $t('register.password') }}</span>
+          </span>
+          <el-input size="small" :key="passwordType" ref="password" v-model="registerForm.password" :type="passwordType"
+            :placeholder="$t('register.password')">
+            <el-button slot="append" @click="showPwd">
+              <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            </el-button>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="birthDay">
+          <span class="svg-container">{{ $t('register.birthDay') }}</span>
+          <el-date-picker size="small" v-model="registerForm.birthDay" type="date" :placeholder="$t('register.birthDay')">
+          </el-date-picker>
+        </el-form-item>
+        <!-- 同意隐私协议 -->
+        <el-form-item>
+          <el-checkbox v-model="agreement">{{ $t('register.agreement') }}</el-checkbox>
+        </el-form-item>
+
+        <el-button :loading="loading" type="primary" style="width:100%; margin-bottom:30px;"
+          @click.native.prevent="handleregister">{{ $t('register.logIn') }}</el-button>
+      </el-form>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'Register',
+  name: 'register',
   data() {
-    var validatePass = (rule, value, callback) => {
-      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S]{6,15}$/.test(value)) {
-        callback(new Error('密码必须包含大写字母，小写字母，数字！'))
-      }
-      if (value === '') {
-        callback(new Error('请输入密码'))
-      } else {
-        if (this.registerForm.confirmPassword !== '') {
-          this.$refs.registerForm.validateField('confirmPwd')
-        }
-        callback()
-      }
-    }
-    var validatePass2 = (rule, value, callback) => {
-      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S]{6,15}$/.test(value)) {
-        callback(new Error('密码必须包含大写字母，小写字母，数字！'))
-      }
-      if (value === '') {
-        callback(new Error('请再次输入密码'))
-      } else if (value !== this.registerForm.password) {
-        callback(new Error('两次输入密码不一致!'))
-      } else {
-        callback()
-      }
-    }
     return {
-      divisionpe: null,
-      canSelect: true,
-      codeUrl: '',
-      // 账号类型
-      userTypeOptions: [
-        { label: '民政', value: 'civil' },
-        { label: '机构', value: 'organization' },
-        { label: '老人或家属', value: 'family' }
-      ],
-      redirectUrlOptions: [],
       registerForm: {
-        userName: '',
+        username: '',
+        email: '',
         password: '',
-        confirmPassword: '',
-        phonenumber: '',
-        userType: 'organization',
-        nickName: '',
-        // code: "",
-        // uuid: "",
-        areaDeptId: '',
-        deptId: '100',
-        status: '1',
-        roleIds: [103],
-        dataSource: '机构注册',
-        divisionCode: '',
-        dynamic: {
-          businessType: null
-        }
+        sex: null,
+        birthdate: ''
       },
       registerRules: {
-        userName: [
-          {
-            required: true,
-            trigger: 'blur',
-            message: '请输入您的账号'
-          },
-          {
-            min: 2,
-            max: 30,
-            message: '用户账号长度必须介于 2 和 30 之间',
-            trigger: ['blur', 'change']
-          }
-        ],
-        phonenumber: [
-          {
-            required: true,
-            message: '手机号码不能为空',
-            trigger: ['blur', 'change']
-          },
-          {
-            pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-            message: '请输入正确的手机号码',
-            trigger: ['blur', 'change']
-          }
-        ],
-        areaDeptId: [
-          {
-            required: true,
-            trigger: ['blur', 'change'],
-            message: '请选择服务地市'
-          }
-        ],
-        divisionCode: [
-          {
-            required: true,
-            trigger: ['blur', 'change'],
-            message: '请选择服务区县'
-          }
-        ],
-        password: [
-          {
-            required: true,
-            message: '请输入密码',
-            trigger: ['blur', 'change']
-          },
-          {
-            min: 6,
-            max: 16,
-            message: '长度在 6 到 16 个字符',
-            trigger: ['blur', 'change']
-          },
-          { validator: validatePass, trigger: ['blur', 'change'] }
-        ],
-        confirmPassword: [
-          {
-            required: true,
-            message: '请确认密码',
-            trigger: ['blur', 'change']
-          },
-          {
-            min: 6,
-            max: 16,
-            message: '长度在 6 到 16 个字符',
-            trigger: ['blur', 'change']
-          },
-          {
-            validator: validatePass2,
-            trigger: ['blur', 'change'],
-            required: true
-          }
-        ],
-        code: [{ required: true, trigger: 'change', message: '请输入验证码' }]
+        email: [{ required: true, trigger: 'blur', validator: '' }],
+        password: [{ required: true, trigger: 'blur', validator: '' }]
       },
       loading: false,
-      captchaOnOff: true,
-      divisionPlaceholder: '请先选在服务地市',
-      cheboxList: []
+      passwordType: 'password',
+      redirect: undefined
+    }
+  },
+  watch: {
+    $route: {
+      handler: function (route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    showPwd() {
+      if (this.passwordType === 'password') {
+        this.passwordType = ''
+      } else {
+        this.passwordType = 'password'
+      }
+      this.$nextTick(() => {
+        this.$refs.password.focus()
+      })
+    },
+    handleregister() {
+      this.$refs.registerForm.validate(valid => {
+        if (valid) {
+          this.loading = true
+          this.$store.dispatch('user/register', this.registerForm).then(() => {
+            this.$router.push({ path: this.redirect || '/' })
+            this.loading = false
+          }).catch(() => {
+            this.loading = false
+          })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     }
   }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-::v-deep .el-radio {
-  width: 80px !important;
-  margin-bottom: 15px !important;
-}
-.register {
+<style lang="scss">
+.register-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-}
-.title {
-  margin: 0px auto 30px auto;
-  text-align: center;
-  color: #707070;
 }
 
-.register-form {
-  border-radius: 6px;
-  background: #ffffff;
-  width: 400px;
-  padding: 25px 25px 5px 25px;
+/* reset element-ui css */
+.register-container {
+  width: 500px;
+  height: 500px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  margin-top: 20px;
+
+  .svg-container {
+    min-width: 80px;
+    max-width: 120px;
+    display: inline-block;
+  }
+
   .el-input {
-    height: 38px;
-    input {
-      height: 38px;
+    width: 300px;
+
+    .el-form-item {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      color: #454545;
     }
   }
-  .input-icon {
-    height: 39px;
-    width: 14px;
-    margin-left: 2px;
-  }
-}
-.register-tip {
-  font-size: 13px;
-  text-align: center;
-  color: #bfbfbf;
-}
-.register-code {
-  width: 33%;
-  height: 38px;
-  float: right;
-  img {
-    cursor: pointer;
-    vertical-align: middle;
-  }
-}
-.el-register-footer {
-  height: 40px;
-  line-height: 40px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-family: Arial;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-.register-code-img {
-  height: 38px;
 }
 </style>
