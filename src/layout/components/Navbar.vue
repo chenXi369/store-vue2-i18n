@@ -4,8 +4,7 @@
 
     <div class="right-menu">
       <div class="menu-item">
-        <svg-icon icon-class="lang"></svg-icon>
-        <span>中/英</span>
+        <lang-select></lang-select>
       </div>
       <router-link to="/login" class="menu-item">
         <svg-icon icon-class="user"></svg-icon>
@@ -20,7 +19,12 @@
 </template>
 
 <script>
+import LangSelect from '@/components/LangSelect/index'
+
 export default {
+  components: {
+    LangSelect
+  },
   methods: {
 
   }

@@ -1,31 +1,33 @@
 <template>
   <div class="login-page">
+    <h3>{{ $t('login.title') }}</h3>
     <div class="login-container">
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
         label-position="left">
 
         <el-form-item prop="username">
-          <span class="svg-container">邮箱</span>
-          <el-input size="mini" ref="username" v-model="loginForm.username" placeholder="Username" name="username"
+          <span class="svg-container">{{ $t('login.email') }}</span>
+          <el-input size="small" ref="username" v-model="loginForm.username" placeholder="Username" name="username"
             type="text" tabindex="1" auto-complete="on" />
         </el-form-item>
 
         <el-form-item prop="password">
           <span class="svg-container">
-            <svg-icon icon-class="password" />
+            <span class="svg-container">{{ $t('login.password') }}</span>
           </span>
-          <el-input size="mini" :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
-            placeholder="Password" name="password" tabindex="2" auto-complete="on" @keyup.enter.native="handleLogin" />
-          <span class="show-pwd" @click="showPwd">
-            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-          </span>
+          <el-input size="small" :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
+            placeholder="Password" name="password" tabindex="2" auto-complete="on" @keyup.enter.native="handleLogin">
+            <el-button slot="append" @click="showPwd">
+              <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            </el-button>
+          </el-input>
         </el-form-item>
 
-        <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;"
-          @click.native.prevent="handleLogin">Login</el-button>
+        <el-button :loading="loading" type="primary" style="width:100%; margin-bottom:30px;"
+          @click.native.prevent="handleLogin">{{ $t('login.logIn') }}</el-button>
 
         <div class="tips">
-          <router-link to="/register">没有账号？点击创建</router-link>
+          <router-link to="/register">{{ $t('login.noAccount') }}</router-link>
         </div>
 
       </el-form>
@@ -109,36 +111,31 @@ export default {
 <style lang="scss">
 .login-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
+
 /* reset element-ui css */
 .login-container {
   width: 500px;
   height: 300px;
   background: #fff;
   border-radius: 5px;
-  padding: 30px;
+  padding: 40px 60px;
   box-sizing: border-box;
   margin-top: 20px;
+
+  .svg-container {
+    min-width: 80px;
+    max-width: 120px;
+    display: inline-block;
+  }
 
   .el-input {
     display: inline-block;
     height: 35px;
-    width: 85%;
-
-    input {
-      background: #eaeaea;
-      border: 0px;
-      border-radius: 0px;
-      padding: 6px 5px 6px 15px;
-      color: #666;
-      height: 33px;
-      border: 1px solid #aaa;
-
-      &:focus {
-        
-      }
-    }
+    width: 300px;
 
     .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);

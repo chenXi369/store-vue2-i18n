@@ -31,6 +31,15 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [{
+        path: '/redirect',
+        component: Layout,
+        hidden: true,
+        children: [{
+            path: '/redirect/:path(.*)',
+            component: () =>
+                import ('@/views/redirect/index')
+        }]
+    }, {
         path: '/404',
         component: () =>
             import ('@/views/404'),
@@ -67,22 +76,26 @@ export const constantRoutes = [{
     },
     // 登录和注册
     {
-        path: '/loginReg',
+        path: '/login',
         component: Layout,
-        redirect: '/login',
+        redirect: '/login/index',
         children: [{
-            path: '/login',
+            path: 'index',
             name: 'Login',
-            hidden: true,
             component: () =>
                 import ('@/views/login/index'),
             meta: {
                 title: 'Login'
             }
-        }, {
-            path: '/register',
+        }]
+    },
+    {
+        path: '/register',
+        component: Layout,
+        redirect: '/register/index',
+        children: [{
+            path: 'index',
             name: 'Register',
-            hidden: true,
             component: () =>
                 import ('@/views/register/index'),
             meta: {
