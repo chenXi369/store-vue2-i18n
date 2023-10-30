@@ -2,29 +2,53 @@
   <div class="login-page">
     <h3>{{ $t('login.title') }}</h3>
     <div class="login-container">
-      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
-        label-position="left">
+      <el-form
+        ref="loginForm"
+        :model="loginForm"
+        :rules="loginRules"
+        class="login-form"
+        auto-complete="on"
+        label-position="left"
+      >
 
         <el-form-item prop="username">
           <span class="svg-container">{{ $t('login.email') }}</span>
-          <el-input size="small" ref="username" v-model="loginForm.username" :placeholder="$t('login.email')" name="username"
-            type="text" tabindex="1" auto-complete="on" />
+          <el-input
+            ref="username"
+            v-model="loginForm.username"
+            size="small"
+            :placeholder="$t('login.email')"
+            name="username"
+            type="text"
+            tabindex="1"
+            auto-complete="on"
+          />
         </el-form-item>
 
         <el-form-item prop="password">
           <span class="svg-container">
             <span class="svg-container">{{ $t('login.password') }}</span>
           </span>
-          <el-input size="small" :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
-            :placeholder="$t('login.password')">
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model="loginForm.password"
+            size="small"
+            :type="passwordType"
+            :placeholder="$t('login.password')"
+          >
             <el-button slot="append" @click="showPwd">
               <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
             </el-button>
           </el-input>
         </el-form-item>
 
-        <el-button :loading="loading" type="primary" style="width:100%; margin-bottom:30px;"
-          @click.native.prevent="handleLogin">{{ $t('login.logIn') }}</el-button>
+        <el-button
+          :loading="loading"
+          type="primary"
+          style="width:100%; margin-bottom:30px;"
+          @click.native.prevent="handleLogin"
+        >{{ $t('login.logIn') }}</el-button>
 
         <div class="tips">
           <router-link to="/register">{{ $t('login.noAccount') }}</router-link>
@@ -70,7 +94,7 @@ export default {
   },
   watch: {
     $route: {
-      handler: function (route) {
+      handler: function(route) {
         this.redirect = route.query && route.query.redirect
       },
       immediate: true
