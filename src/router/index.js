@@ -31,125 +31,125 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [{
-        path: '/redirect',
-        component: Layout,
-        hidden: true,
-        children: [{
-            path: '/redirect/:path(.*)',
-            component: () =>
-                import ('@/views/redirect/index')
-        }]
-    }, {
-        path: '/404',
-        component: () =>
-            import ('@/views/404'),
-        hidden: true
-    },
-    {
-        path: '/',
-        component: Layout,
-        redirect: '/home',
-        children: [{
-            path: 'home',
-            name: 'Home',
-            component: () =>
-                import ('@/views/home/index'),
-            meta: {
-                title: 'Home'
-            }
-        }]
-    },
-    // 个人账户
-    {
-        path: '/account',
-        component: Layout,
-        redirect: '/account',
-        children: [{
-            path: '/account',
-            name: 'Account',
-            component: () =>
-                import ('@/views/account/index'),
-            meta: {
-                title: 'account'
-            }
-        }]
-    },
-    // 登录和注册
-    {
-        path: '/login',
-        component: Layout,
-        redirect: '/login/index',
-        children: [{
-            path: 'index',
-            name: 'Login',
-            component: () =>
-                import ('@/views/login/index'),
-            meta: {
-                title: 'Login'
-            }
-        }]
-    },
-    {
-        path: '/register',
-        component: Layout,
-        redirect: '/register/index',
-        children: [{
-            path: 'index',
-            name: 'Register',
-            component: () =>
-                import ('@/views/register/index'),
-            meta: {
-                title: 'Register'
-            }
-        }]
-    },
-    {
-        path: '/goods',
-        component: Layout,
-        redirect: '/goods/list',
-        children: [{
-            path: '/goods/list',
-            name: 'GoodsList',
-            hidden: true,
-            component: () =>
-                import ('@/views/goods/list'),
-            meta: {
-                title: 'GoodsList'
-            }
-        }, {
-            path: '/goods/detail',
-            name: 'GoodsDetail',
-            hidden: true,
-            component: () =>
-                import ('@/views/goods/detail'),
-            meta: {
-                title: 'GoodsDetail'
-            }
-        }]
-    },
-
-    // 404 page must be placed at the end !!!
-    {
-        path: '*',
-        redirect: '/404',
-        hidden: true
+  path: '/redirect',
+  component: Layout,
+  hidden: true,
+  children: [{
+    path: '/redirect/:path(.*)',
+    component: () =>
+      import ('@/views/redirect/index')
+  }]
+}, {
+  path: '/404',
+  component: () =>
+    import ('@/views/404'),
+  hidden: true
+},
+{
+  path: '/',
+  component: Layout,
+  redirect: '/home',
+  children: [{
+    path: 'home',
+    name: 'Home',
+    component: () =>
+      import ('@/views/home/index'),
+    meta: {
+      title: 'Home'
     }
+  }]
+},
+// 个人账户
+{
+  path: '/account',
+  component: Layout,
+  redirect: '/account',
+  children: [{
+    path: '/account',
+    name: 'Account',
+    component: () =>
+      import ('@/views/account/index'),
+    meta: {
+      title: 'account'
+    }
+  }]
+},
+// 登录和注册
+{
+  path: '/login',
+  component: Layout,
+  redirect: '/login/index',
+  children: [{
+    path: 'index',
+    name: 'Login',
+    component: () =>
+      import ('@/views/login/index'),
+    meta: {
+      title: 'Login'
+    }
+  }]
+},
+{
+  path: '/register',
+  component: Layout,
+  redirect: '/register/index',
+  children: [{
+    path: 'index',
+    name: 'Register',
+    component: () =>
+      import ('@/views/register/index'),
+    meta: {
+      title: 'Register'
+    }
+  }]
+},
+{
+  path: '/mobilePhone',
+  component: Layout,
+  redirect: '/mobilePhone/list',
+  children: [{
+    path: '/mobilePhone/list',
+    name: 'MobilePhone',
+    hidden: true,
+    component: () =>
+      import ('@/views/mobilePhone/list'),
+    meta: {
+      title: 'MobilePhone'
+    }
+  }, {
+    path: '/mobilePhone/detail',
+    name: 'MobileDetail',
+    hidden: true,
+    component: () =>
+      import ('@/views/mobilePhone/detail'),
+    meta: {
+      title: 'MobileDetail'
+    }
+  }]
+},
+
+// 404 page must be placed at the end !!!
+{
+  path: '*',
+  redirect: '/404',
+  hidden: true
+}
 ]
 
 const createRouter = () => new Router({
-    // mode: 'history', // require service support
-    scrollBehavior: () => ({
-        y: 0
-    }),
-    routes: constantRoutes
+  // mode: 'history', // require service support
+  scrollBehavior: () => ({
+    y: 0
+  }),
+  routes: constantRoutes
 })
 
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-    const newRouter = createRouter()
-    router.matcher = newRouter.matcher // reset router
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
 }
 
 export default router

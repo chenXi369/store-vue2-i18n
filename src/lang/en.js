@@ -3,7 +3,8 @@ export default {
     Home: 'Home',
     Login: 'Login',
     Register: 'Register',
-    Account: 'Account'
+    Account: 'Account',
+    MobilePhone: 'MobilePhone'
   },
   navbar: {
     callme: 'Call me',
@@ -11,7 +12,8 @@ export default {
     goodCar: 'Cart',
     profile: 'Profile',
     theme: 'Theme',
-    size: 'Global Size'
+    size: 'Global Size',
+    menus: ['MOBILE PHONES', 'TABLETS', 'COMPUTER HARDWARE', 'OTHER']
   },
   footer: {
     listKeys: ['PRODUCTS', 'OUR COMPANY', 'YOUR ACCOUNT', 'Information'],
@@ -30,8 +32,12 @@ export default {
     {
       key: 'Information',
       values: ['Hong Kong Shimao Import and export Trading Co Ltd', 'New products', 'Best sales']
-    }
-    ]
+    }]
+  },
+  home: {
+    popularPro: 'POPULAR PRODUCTS',
+    allProduct: 'All Products',
+    itemView: 'View Check'
   },
   login: {
     title: 'Log in to your account',

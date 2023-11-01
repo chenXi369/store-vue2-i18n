@@ -3,7 +3,8 @@ export default {
     Home: '首页',
     Login: '登录',
     Register: '注册',
-    Account: '账户'
+    Account: '账户',
+    MobilePhone: '移动产品'
   },
   navbar: {
     callme: '联系电话',
@@ -11,27 +12,33 @@ export default {
     goodCar: '购物车',
     profile: '个人中心',
     theme: '换肤',
-    size: '布局大小'
+    size: '布局大小',
+    menus: ['移动产品', '药品', '电脑数码', '其他']
   },
   footer: {
     listKeys: ['产品', '我的公司', '账户信息', '商户信息'],
     itemList: [{
       key: '产品',
-      values: []
+      values: ['Prices drop', 'New products', 'Best sales']
     },
     {
       key: '我的公司',
-      values: []
+      values: ['Delivery', 'Legal Notice', 'Secure payment', 'Privacy Policy']
     },
     {
       key: '账户信息',
-      values: []
+      values: ['Personal info', 'Orders', 'Addresses', 'Vouchers']
     },
     {
       key: '商户信息',
-      values: []
+      values: ['Hong Kong Shimao Import and export Trading Co Ltd', 'New products', 'Best sales']
     }
     ]
+  },
+  home: {
+    popularPro: '主流产品',
+    allProduct: '所有商品',
+    itemView: '查看详情'
   },
   // 登录
   login: {

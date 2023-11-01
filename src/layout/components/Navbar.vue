@@ -4,14 +4,14 @@
 
     <div class="right-menu">
       <div class="menu-item">
-        <lang-select></lang-select>
+        <lang-select />
       </div>
       <router-link to="/login" class="menu-item">
-        <svg-icon icon-class="user"></svg-icon>
+        <svg-icon icon-class="user" />
         <span>{{ $t('navbar.loginName') }}</span>
       </router-link>
       <div class="menu-item">
-        <svg-icon icon-class="goodCar"></svg-icon>
+        <svg-icon icon-class="goodCar" />
         <span>{{ $t('navbar.goodCar') }}</span>
       </div>
     </div>

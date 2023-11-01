@@ -7,7 +7,7 @@
       </div>
       <app-main />
 
-      <page-footer /> 
+      <page-footer />
     </div>
   </div>
 </template>

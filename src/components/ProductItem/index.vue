@@ -6,7 +6,7 @@
 
     <transition name="el-zoom-in-bottom">
       <div v-if="showDetailBox" class="detail" @click="toGoodDetail(goodRow)">
-        <el-button type="text" icon="el-icon-search">详情</el-button>
+        <el-button type="text" icon="el-icon-search">{{ $t('home.itemView') }}</el-button>
       </div>
     </transition>
   </div>
@@ -64,7 +64,7 @@ export default {
   }
 
   .avatar {
-    width: 250px;
+    width: 100%;
     height: 250px;
   }
 

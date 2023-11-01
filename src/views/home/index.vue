@@ -2,32 +2,32 @@
 <template>
   <div class="home-container">
     <el-carousel height="300px">
-      <el-carousel-item v-for="item in 4" :key="item"></el-carousel-item>
+      <el-carousel-item v-for="item in 4" :key="item" />
     </el-carousel>
 
     <div>
-      <h3>POPULAR PRODUCTS</h3>
+      <h2 style="padding-top: 15px">{{ $t('home.popularPro') }}</h2>
       <ul class="product-list">
-        <li class="item" v-for="row in 8" :key="row">
-          <item :goodRow="row"></item>
+        <li v-for="row in 8" :key="row" class="item">
+          <item :good-row="row" />
         </li>
       </ul>
 
       <p style="text-align: right; color: #666; line-height: 50px;">
-        <router-link to="/allGoods">所有商品</router-link>
-        <i class="el-icon-arrow-right"></i>
+        <router-link to="/allGoods">{{ $t('home.allProduct') }} </router-link>
+        <i class="el-icon-arrow-right" />
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import Item from "@/components/ProductItem/index.vue"
+import Item from '@/components/ProductItem/index.vue'
 
 export default {
   name: 'Home',
   components: {
-      Item
+    Item
   }
 }
 </script>
@@ -42,13 +42,14 @@ export default {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      padding: 20px;
       padding: 0; margin: 0;
 
       .item {
-        width: 250px;
+        width: calc(25% - 40px);
+        min-width: 250px;
         height: 360px;
-        margin-top: 40px;
+        margin: 20px;
       }
     }
   }
