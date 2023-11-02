@@ -1,11 +1,11 @@
 <template>
   <div class="product-item" @mouseenter="mouseenter" @mouseleave="mouseleave">
-    <img class="avatar" :src="goodRow.avatar" alt="">
+    <img class="avatar" :src="goodRow.avatar" alt="" @click="toGoodDetail(goodRow)">
     <p class="intro">{{ goodRow.intro }}</p>
     <p class="price">{{ goodRow.price }}</p>
 
     <transition name="el-zoom-in-bottom">
-      <div v-if="showDetailBox" class="detail" @click="toGoodDetail(goodRow)">
+      <div v-if="showDetailBox" class="detail">
         <el-button type="text" icon="el-icon-search">{{ $t('home.itemView') }}</el-button>
       </div>
     </transition>
@@ -35,9 +35,9 @@ export default {
     // 跳转商品详情页
     toGoodDetail(row) {
       this.$router.push({
-        path: '/goods/detail',
+        path: '/mobilePhone/detail',
         query: {
-          id: row.id
+          id: row
         }
       })
     }

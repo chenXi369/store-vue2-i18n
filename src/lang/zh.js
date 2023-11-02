@@ -4,7 +4,9 @@ export default {
     Login: '登录',
     Register: '注册',
     Account: '账户',
-    MobilePhone: '移动产品'
+    MobilePhone: '移动产品',
+    MobileDetail: '产品详情',
+    order: '我的订单'
   },
   navbar: {
     callme: '联系电话',
@@ -72,6 +74,57 @@ export default {
     confirm: '确认',
     cancel: '取消',
     logoutSuccess: '退出成功'
+  },
+  mobilePhone: {
+    title: '移动产品',
+    show: '显示41565件商品中的1-12件',
+    sort: '排序',
+    quantity: '数量',
+    share: '分享',
+    description: '描述',
+    productDetails: '商品详情',
+    toCart: '加入购物车',
+    sortText: '请选择',
+    totalText: '共有{0}件产品',
+    pageText: '显示[0-1] 共有{0}',
+    filterParam: [{
+      value: '1',
+      label: '销售额，从最高到最低'
+    }, {
+      value: '2',
+      label: '相关性'
+    }, {
+      value: '3',
+      label: '名称, 从A到Z'
+    }, {
+      value: '4',
+      label: '名称, 从Z到 A'
+    },
+    {
+      value: '5',
+      label: '价格, 从低到高'
+    },
+    {
+      value: '6',
+      label: '价格, 从高到低'
+    }
+    ]
+  },
+  order: {
+    shoppingCart: '我的购物车',
+    cartItem: '个商品',
+    showDetails: '显示详情',
+    subtotal: '小计',
+    shipping: '运费',
+    free: '免费',
+    totalTaxExcl: '总计（不含税）',
+    totalTaxIncl: '总计（含税）',
+    taxes: '税费',
+    promoCode: '有促销代码吗？',
+    tips: '只有当你点击结账结束时的“有义务付款的订单”按钮时，订单才会被确认！',
+    securityPolicy: '安全政策',
+    deliveryPolicy: '交付政策',
+    returnPolicy: '退货政策'
   },
   permission: {
     addRole: '新增角色',

@@ -127,6 +127,20 @@ export const constantRoutes = [{
     }
   }]
 },
+{
+  path: '/order',
+  component: Layout,
+  redirect: '/order/index',
+  children: [{
+    path: '/order/index',
+    name: 'Order',
+    component: () =>
+      import ('@/views/order/index'),
+    meta: {
+      title: 'Order'
+    }
+  }]
+},
 
 // 404 page must be placed at the end !!!
 {

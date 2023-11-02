@@ -4,7 +4,9 @@ export default {
     Login: 'Login',
     Register: 'Register',
     Account: 'Account',
-    MobilePhone: 'MobilePhone'
+    MobilePhone: 'MobilePhone',
+    MobileDetail: 'MobileDetail',
+    Order: 'Order'
   },
   navbar: {
     callme: 'Call me',
@@ -68,6 +70,56 @@ export default {
     confirm: 'Confirm',
     cancel: 'Cancel',
     logoutSuccess: 'Succeed Logout'
+  },
+  mobilePhone: {
+    title: 'MOBILE PHONES',
+    show: 'Showing',
+    sort: 'Sort by',
+    quantity: 'Quantity',
+    share: 'Share',
+    description: 'Description',
+    productDetails: 'Product Details',
+    toCart: 'ADD TO CART',
+    sortText: 'Place Select',
+    totalText: 'There are {0} products',
+    pageText: 'Showing [0-1] of {0} item(s)',
+    filterParam: [{
+      value: '1',
+      label: 'Sales, highest to lowest'
+    }, {
+      value: '2',
+      label: 'Relevance'
+    }, {
+      value: '3',
+      label: 'Name, A to Z'
+    }, {
+      value: '4',
+      label: 'Name, Z to A'
+    },
+    {
+      value: '5',
+      label: 'Price, low to high'
+    },
+    {
+      value: '6',
+      label: 'Price, high to low'
+    }]
+  },
+  order: {
+    shoppingCart: 'My shopping cart',
+    cartItem: 'item',
+    showDetails: 'show details',
+    subtotal: 'Subtotal',
+    shipping: 'Shipping',
+    free: 'Free',
+    totalTaxExcl: 'Total(tax excl.)',
+    totalTaxIncl: 'Total(tax incl.)',
+    taxes: 'Taxes',
+    promoCode: 'Have a promo code ?',
+    tips: "The order will only be confirmed when vou clickon the button 'Order with an obligation to pay' atthe end of the checkout!",
+    securityPolicy: 'Security policy (edit with Customer reassurance module)',
+    deliveryPolicy: 'Delivery policy (edit with Customer reassurance module)',
+    returnPolicy: 'Return policy (edit with Customer reassurance module)'
   },
   permission: {
     addRole: 'New Role',
