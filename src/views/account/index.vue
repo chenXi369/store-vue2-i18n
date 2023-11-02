@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { removeToken } from '@/utils/auth'
+
 export default {
   data() {
     return {
@@ -40,6 +42,8 @@ export default {
           type: 'success',
           message: this.$t('account.logoutSuccess')
         })
+        removeToken()
+        this.$router.push('/home')
       }).catch(() => {
       })
     }

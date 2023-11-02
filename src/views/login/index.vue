@@ -60,6 +60,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'Login',
@@ -116,6 +117,7 @@ export default {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
+            Cookies.set('username', this.loginForm.username)
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {

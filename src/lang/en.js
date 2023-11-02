@@ -15,6 +15,7 @@ export default {
     profile: 'Profile',
     theme: 'Theme',
     size: 'Global Size',
+    username: 'user-{name}',
     menus: ['MOBILE PHONES', 'TABLETS', 'COMPUTER HARDWARE', 'OTHER']
   },
   footer: {

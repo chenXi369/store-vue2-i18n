@@ -6,11 +6,15 @@
       <div class="menu-item">
         <lang-select />
       </div>
-      <router-link to="/login" class="menu-item">
+      <router-link v-if="!showUser" to="/login" class="menu-item">
         <svg-icon icon-class="user" />
         <span>{{ $t('navbar.loginName') }}</span>
       </router-link>
-      <div class="menu-item">
+      <router-link v-else to="/account" class="menu-item">
+        <svg-icon icon-class="user" />
+        <span>{{ $t('navbar.username').replace('{name}', username) }}</span>
+      </router-link>
+      <div class="menu-item" @click="toCarOrder">
         <svg-icon icon-class="goodCar" />
         <span>{{ $t('navbar.goodCar') }}</span>
       </div>
@@ -20,13 +24,44 @@
 
 <script>
 import LangSelect from '@/components/LangSelect/index'
+import { getToken } from '@/utils/auth'
+import Cookies from 'js-cookie'
 
 export default {
   components: {
     LangSelect
   },
+  data() {
+    return {
+      showUser: true,
+      username: Cookies.get('username')
+    }
+  },
+  watch: {
+    '$route.path'() {
+      if (getToken()) {
+        this.showUser = true
+      } else {
+        this.showUser = false
+      }
+    }
+  },
+  created() {
+    console.log(this.username)
+    if (getToken()) {
+      this.showUser = true
+    } else {
+      this.showUser = false
+    }
+  },
   methods: {
-
+    toCarOrder() {
+      if (getToken()) {
+        this.$router.push('/order')
+      } else {
+        this.$router.push('/login')
+      }
+    }
   }
 }
 </script>

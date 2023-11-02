@@ -15,6 +15,7 @@ export default {
     profile: '个人中心',
     theme: '换肤',
     size: '布局大小',
+    username: '用户-{name}',
     menus: ['移动产品', '药品', '电脑数码', '其他']
   },
   footer: {

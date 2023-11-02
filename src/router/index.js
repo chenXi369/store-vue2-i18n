@@ -50,7 +50,7 @@ export const constantRoutes = [{
   component: Layout,
   redirect: '/home',
   children: [{
-    path: 'home',
+    path: '/home',
     name: 'Home',
     component: () =>
       import ('@/views/home/index'),
